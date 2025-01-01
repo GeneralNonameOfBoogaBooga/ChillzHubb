@@ -1,3 +1,15 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local TweenService = game:GetService("TweenService")
+local Part = Character.HumanoidRootPart
+
+local Infa = TweenInfo.new(2.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local Target = CFrame.new(907.350098, -0.893874943, -1416.97876, 0.225359529, 0, -0.974275649, 0, 1, 0, 0.974275649, 0, 0.225359529)
+local Target2 = CFrame.new(941.215759, -2.681952, -1430.29358, 0.931199968, 0, -0.364508718, 0, 1, 0, 0.364508718, 0, 0.931199968)
+local Target3 = CFrame.new(923.798157, -3.00000024, -1390.67212, -0.895030856, 0, 0.446004272, 0, 1, 0, -0.446004272, 0, -0.895030856)
+local Target4 = CFrame.new(959.26123, -3.00000024, -1392.82007, -0.203328684, 0, -0.979110539, 0, 1, 0, 0.979110539, 0, -0.203328684)
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 local Window = Library.CreateLib("Chlen Hub", "RJTheme3")
 local Tab = Window:NewTab("Main")
@@ -31,4 +43,25 @@ _G.Settings = {
     ["Low Quality Parts"] = true -- Lower quality parts
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
+end)
+local Tab = Window:NewTab("Farming")
+local Section2 = Tab:NewSection("Gold Farm")
+Section2:NewButton("Golg Farm 4 Nodes(GO TO 4 ICE GOLD NODES)", "", function()
+    while true do
+    local Tween = TweenService:Create(Part, Infa, {CFrame = Target})
+    Tween:Play()
+    wait(7.3)
+
+    local Tween2 = TweenService:Create(Part, Infa, {CFrame = Target2})
+    Tween2:Play()
+    wait(7.3)
+
+    local Tween3 = TweenService:Create(Part, Infa, {CFrame = Target3})
+    Tween3:Play()
+    wait(7.3)
+
+    local Tween4 = TweenService:Create(Part, Infa, {CFrame = Target4})
+    Tween4:Play()
+    wait(7.3)
+end
 end)
