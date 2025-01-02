@@ -1,14 +1,19 @@
+getgenv().speed = 22
 local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+ 
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-local TweenService = game:GetService("TweenService")
-local Part = Character.HumanoidRootPart
 
-local Infa = TweenInfo.new(2.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-local Target = CFrame.new(907.350098, -0.893874943, -1416.97876, 0.225359529, 0, -0.974275649, 0, 1, 0, 0.974275649, 0, 0.225359529)
-local Target2 = CFrame.new(941.215759, -2.681952, -1430.29358, 0.931199968, 0, -0.364508718, 0, 1, 0, 0.364508718, 0, 0.931199968)
-local Target3 = CFrame.new(923.798157, -3.00000024, -1390.67212, -0.895030856, 0, 0.446004272, 0, 1, 0, -0.446004272, 0, -0.895030856)
-local Target4 = CFrame.new(959.26123, -3.00000024, -1392.82007, -0.203328684, 0, -0.979110539, 0, 1, 0, 0.979110539, 0, -0.203328684)
+function tweenTeleport(to, speed)
+    local rootPart = Character.HumanoidRootPart
+    local tween = TweenService:Create(rootPart, TweenInfo.new((to.Position - rootPart.Position).Magnitude / speed, Enum.EasingStyle.Linear), {
+        CFrame = CFrame.new(to.Position)
+    })
+    tween:Play()  -- Добавлено
+    tween.Completed:Wait()
+end
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "VHub",
@@ -45,7 +50,7 @@ local Window = Rayfield:CreateWindow({
 })
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Main")
-Section:Set("Ur Mom Is So Fat lolll")
+Section:Set("FPS")
 local Divider = Tab:CreateDivider()
 Divider:Set(false) -- Whether the divider's visibility is to be set to true or false.
 local Button = Tab:CreateButton({
@@ -84,25 +89,17 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord
    end,
 })
 local Tab2 = Window:CreateTab("Farming", 4483362458)
-local Button = Tab:CreateButton({
+local Button = Tab2:CreateButton({
    Name = "Gold Farm 4 Nodes(GO TO 4 ICE GOLD NODES)",
    Callback = function()
       while true do
-    local Tween = TweenService:Create(Part, Infa, {CFrame = Target})
-    Tween:Play()
-    wait(7.3)
-
-    local Tween2 = TweenService:Create(Part, Infa, {CFrame = Target2})
-    Tween2:Play()
-    wait(7.3)
-
-    local Tween3 = TweenService:Create(Part, Infa, {CFrame = Target3})
-    Tween3:Play()
-    wait(7.3)
-
-    local Tween4 = TweenService:Create(Part, Infa, {CFrame = Target4})
-    Tween4:Play()
-    wait(5)
-end
-      end,
+          tweenTeleport(CFrame.new(907.350098, -0.893874943, -1416.97876, 0.225359529, 0, -0.974275649, 0, 1, 0, 0.974275649, 0, 0.225359529), getgenv().speed)
+          wait(5)
+          tweenTeleport(CFrame.new(941.215759, -2.681952, -1430.29358, 0.931199968, 0, -0.364508718, 0, 1, 0, 0.364508718, 0, 0.931199968), getgenv().speed)
+          wait(5)
+          tweenTeleport(CFrame.new(923.798157, -3.00000024, -1390.67212, -0.895030856, 0, 0.446004272, 0, 1, 0, -0.446004272, 0, -0.895030856), getgenv().speed)
+          wait(5)  -- Исправлено
+          tweenTeleport(CFrame.new(959.26123, -3.00000024, -1392.82007, -0.203328684, 0, -0.979110539, 0, 1, 0, 0.979110539, 0, -0.203328684), getgenv().speed)
+      end
+   end
 })
