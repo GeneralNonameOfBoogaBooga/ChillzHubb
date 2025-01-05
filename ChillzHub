@@ -1,4 +1,4 @@
-getgenv().speed = 20
+getgenv().speed = 22
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
  
@@ -56,7 +56,13 @@ Divider:Set(false) -- Whether the divider's visibility is to be set to true or f
 local Button = Tab:CreateButton({
    Name = "Anti Drop",
    Callback = function()
-      Workspace.Items:Destroy()
+      local folder = game.Workspace:FindFirstChild("Items") -- Замените Workspace на нужное место, если нужно
+
+if folder then
+    for _, item in ipairs(folder:GetChildren()) do
+        item:Destroy() -- Удаляем каждый элемент в папке
+    end
+end
    end,
 })
 local Button2 = Tab:CreateButton({
@@ -134,9 +140,9 @@ local Button = Tab2:CreateButton({
           tweenTeleport(CFrame.new(478.696014, -0.0287240148, -435.015656, -0.396826625, 0, -0.917893589, 0, 1, 0, 0.917893589, 0, -0.396826625), getgenv().speed)
           tweenTeleport(CFrame.new(549.72052, 10.2793112, -388.839355, 0.0450310521, 0, -0.998985589, 0, 1, 0, 0.998985589, 0, 0.0450310521), getgenv().speed)
           tweenTeleport(CFrame.new(606.255432, -4.97621536, -385.147217, -0.0770501047, 0, -0.997027218, 0, 1, 0, 0.997027218, 0, -0.0770501047), getgenv().speed)
-Wait(5)
+          Wait(5)
           tweenTeleport(CFrame.new(637.236267, -6.71210051, -375.368774, -0.421336979, 0, -0.906904161, 0, 1, 0, 0.906904161, 0, -0.421336979), getgenv().speed)
-Wait(5)
+          Wait(5)
           tweenTeleport(CFrame.new(624.622559, -7.31317472, -360.840973, -0.999693334, 0, 0.0247643031, 0, 1, 0, -0.0247643031, 0, -0.999693334), getgenv().speed)
           Wait(5)
           tweenTeleport(CFrame.new(609.019348, -7.40335226, -355.588501, -0.89731741, 0, 0.441385835, 0, 1, 0, -0.441385835, 0, -0.89731741), getgenv().speed)
@@ -190,5 +196,20 @@ Wait(5)
           tweenTeleport(CFrame.new(911.057312, -3.86576247, -1326.83521, 0.896392226, 0, -0.443261713, 0, 1, 0, 0.443261713, 0, 0.896392226), getgenv().speed)
           tweenTeleport(CFrame.new(902.154785, -1.68460822, -1414.00769, 0.998025775, 0, -0.0628056303, 0, 1, 0, 0.0628056303, 0, 0.998025775), getgenv().speed)
       end
+   end
+})
+local Button = Tab2:CreateButton({
+   Name = "Farming fps Booster(DONT USE IN PVP)",
+   Callback = function()
+local namesToDestroy = {"Stump", "Trunk", "Leaves", "Banto", "Bantae"}
+
+for i, v in pairs(game:GetDescendants()) do
+    for _, name in ipairs(namesToDestroy) do
+        if v.Name == name then
+            v:Destroy()
+            break -- прерываем внутренний цикл, если объект был уничтожен
+        end
+    end
+end
    end
 })
