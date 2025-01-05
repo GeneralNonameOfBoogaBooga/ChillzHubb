@@ -1,4 +1,4 @@
-getgenv().speed = 22
+getgenv().speed = 20
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
  
