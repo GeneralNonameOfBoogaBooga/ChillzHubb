@@ -1,4 +1,4 @@
-getgenv().speed = 20
+getgenv().speed = 22
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
  
@@ -201,13 +201,3 @@ end
    end
 })
 local Tab3 = Window:CreateTab("Combat", 4483362458)
-local Button5 = Tab3:CreateButton({
-   Name = "AutoHeal",
-   Callback = function()
-    if Character:FindFirstChild("Humanoid") then
-            while Character.Humanoid.Health <= 81 then
-                game:GetService("ReplicatedStorage").Events.UseBagltem:FireServer("Bloodfruit")
-            end
-        end  
-   end,
-})
