@@ -103,7 +103,7 @@ local Button = Tab2:CreateButton({
    Name = "Gold Farm 19 Nodes(GO TO 4 ICE GOLD NODES)",
    Callback = function()
       while true do
-          tweenTeleport(CFrame.new = positions, getgenv().speed)
+          tweenTeleport(CFrame.new(positions), getgenv().speed)
       end
    end
 })
